@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demo</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="Contents/Styles/dist/reset.css">
+</head>
+<style type="text/css">
+	body{
+		font-size: 14px;
+	}
+	.pageContainer{
+		width: 980px;
+		height: 1200px;
+		margin: 0 auto;
+	}
+	.selectPanel{
+		padding-top: 50px;
+		width: 100%;
+		height: 150px;
+	}
+	.rowList{
+		display: inline-block;
+		width: 300px;
+		padding: 5px 0px;
+	}
+	.rowList label{
+		width: 150px;
+		text-align: right;
+	}
+	.configPanel{
+		width: 980px;
+		height: 200px;
+	}
+	.configPanel_left{
+		float: left;
+	    width: 433px;
+	    height: 200px;
+	    margin-right: 47px;
+	    border: 1px solid #bdbbb2;
+	}
+	.configPanel_right{
+		float: left;		
+		width: 500px;
+		height: 200px;
+		border: 1px solid #bdbbb2;
+	}
+	.configPanel_right_top{
+		padding: 0px 5px 0px 5px;
+		float: right;
+	}
+	.rowSingle{
+		width: 100%;
+		height: 48px;
+		line-height: 48px;
+	}
+	.configRowSingle input{
+		width: 40px;
+	}
+	.configRowSingle{
+		padding: 5px;
+	}
+	.configRowSingle a{
+		float: right;
+	}
+	.collectionContainer{
+		margin-top: 20px;
+		width: 100%;
+		border: 1px solid #bdbbb2;
+	}
+	.collectionContainer_right{
+		float: right;
+	}
+	.collectionTitle{
+		color: #eee;
+		display: inline-block;
+		min-width: 150px;
+		height: 35px;
+		background: #169BD5;
+		margin: 5px;
+		padding: 5px 10px;
+		border-radius: 5px;
+		text-align: center;
+	}
+	.collection a{
+		color: #eee;
+	}
+	.collection{
+		position: relative;
+		float: left;
+	}
+	.configPanel_left_Container{
+
+	}
+	.configPanel_sideBar{
+		display: inline-block;
+		width: 115px;
+		float: left;
+	}
+	.configPanel_conf{
+		display: inline-block;
+	}
+	.configList{
+		width: 315px;
+		padding: 5px;
+		color: #169bD9;
+	}
+	.configPanel_left_title{
+		padding: 5px;
+	}
+	.configList_Op{
+		float: right;
+	}
+	.collectionDetail{
+		display: none;
+		width: 200px;
+		background-color: #ccc;
+	    position: absolute;
+	    top: 43px;
+	    left: 5px;
+	    padding: 5px;
+	    z-index: 88
+	}	
+</style>
+<body>
+	<div class="pageContainer">
+		<div class="selectPanel">
+			<div class="rowContainer">
+				<div class="rowList">
+					<label>模板：</label>
+					<select name="" id="">
+						<option>标准指标</option>
+					</select>
+				</div>
+				<span><a href="#">添加</a></span>			
+			</div>
+			<div class="rowContainer">
+				<div class="rowList">
+					<label>债券类别：</label>
+					<select name="" id="">
+						<option>请选择</option>
+					</select>
+				</div>
+				<div class="rowList">
+					<label>行业类别：</label>
+					<select name="" id="">
+						<option>请选择</option>
+					</select>
+				</div>
+				<div class="rowList">
+					<label>债券类别：</label>
+					<select name="" id="">
+						<option>请选择</option>
+					</select>
+				</div>								
+			</div>
+			<div class="rowContainer">
+				<div class="rowList" style="width: 500px">
+					<label>债券代码或名称：</label>
+					<select style="width: 281px" name="" id="">
+						<option>标准指标</option>
+					</select>
+				</div>
+			</div>						
+		</div>
+		<div class="configPanel">
+			<div class="configPanel_left">
+				<div class="configPanel_left_title">增加筛选标准</div>
+				<div class="configPanel_left_Container">
+					<div class="configPanel_sideBar">
+						<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+                        
+                        <!-- 左侧大项模板 -->
+						<script id="configPanel_left_Tmp" type="text/x-dot-template">
+					        {{ for(prop in it){ }}
+					        	{{? prop === 0 }}
+									<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#{{= it[prop].ParentId }}" role="tab">{{= it[prop].ParentName }}</a>
+									{{??}}
+									<a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#{{= it[prop].ParentId }}" role="tab">{{= it[prop].ParentName }}</a>								
+								{{?}}
+							{{ } }}		
+						</script>
+						</div>
+					</div>
+					<div class="configPanel_conf">
+						<div class="tab-content" id="v-pills-tabContent">
+                        <!-- 左侧小项模板 -->
+						<script id="configPanel_conf_Tmp" type="text/x-dot-template">
+					        {{ for(prop in it){ }}
+								<div class="tab-pane fade show" id="{{= it[prop].ParentId }}" role="tabpanel">
+									{{ for(number in it[prop].Children){ }}
+								   		<div class="configList"><a class="singleList" href="#" data-type="{{= it[prop].Children[number].type }}">{{= it[prop].Children[number].ChildName }}</a></div>
+								   	{{ } }}
+						  		</div>
+							{{ } }}		
+						</script>
+
+
+<!-- 						  <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="v-pills-home-tab">
+						   		<div class="configList"><a href="#"></a>总资产<div class="configList_Op"><a href="#">√ </a><a href="#">×</a></div></div>
+						   		<div class="configList"><a href="#">净资产</a></div>
+						   		<div class="configList"><a href="#">销售收入</a></div>
+						  </div>
+						
+
+						  <div class="tab-pane fade" id="MakertData" role="tabpanel">
+						  	<div class="configList">负债率绝对指标<div class="configList_Op"><a href="#">√ </a><a href="#">×</a></div></div>
+						   		<div class="configList"><a href="#">负债率相对指标</a></div>
+						   		<div class="configList"><a href="#">利息保障倍数3年绝对指标</a></div>
+						   		<div class="configList"><a href="#">利息绝对保障倍数最近1年绝对指标</a></div>
+						   		<div class="configList"><a href="#">利息绝对保障倍数3年相对指标</a></div>
+						  </div>
+						  <div class="tab-pane fade" id="financeData" role="tabpanel">
+						   		<div class="configList"><a href="#">净利润3年绝对指标</a></div>
+						   		<div class="configList"><a href="#">净利润最近1期绝对指标</a></div>
+						   		<div class="configList"><a href="#">ROE最近1年相对指标</a></div>
+						   		<div class="configList"><a href="#">ROE3年波动率相对指标</a></div>
+						  </div> -->
+						</div>					
+					</div>
+
+				</div>
+
+			</div>
+			<div class="configPanel_right">
+				<div>
+					<span>修改筛选标准</span>
+					<div class="configPanel_right_top">
+						<span><a class="addColle" href="#" >加入结果集</a></span>
+						<span>|</span>
+						<span><a href="#">全部清除</a></span>
+					</div>
+					<div class="configRowSingle">
+						<span>总资产</span>
+						<span>国营：剔除<=</span>
+						<input type="text">
+						<span>%</span>
+						<span>总资产</span>
+						<span>国营：剔除<=</span>
+						<input type="text">
+						<span>%</span>
+						<a href="#">×</a>						
+					</div>
+					<div class="configRowSingle">
+						<span>总资产</span>
+						<span>国营：剔除<=</span>
+						<input type="text">
+						<span>%</span>
+						<span>总资产</span>
+						<span>国营：剔除<=</span>
+						<input type="text">
+						<span>%</span>
+						<a href="#">×</a>						
+					</div>					
+					<div class="configRowSingle">
+						<span>利息保障倍数</span>
+						<span>剔除3年低于</span>
+						<select class="averg">
+							<option value="">行业平均</option>
+						</select>
+						<a href="#">×</a>						
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div class="collectionContainer clearfix">
+			<div class="configRowSingle">筛选条件集<span class="collectionContainer_right"><a href="#">另存为模板</a></span></div>
+			<div class="collection">
+				<div class="collectionTitle">
+					<span>国债等2项</span>
+					<span><a href="#">×</a></span>					
+				</div>
+				<div class="collectionDetail">
+					<div>国债</div>
+					<div>AA</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script data-main="Scripts/src/pages/index" src="Scripts/src/lib/require.js"></script>
+</body>
+</html>

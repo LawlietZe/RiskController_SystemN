@@ -1,0 +1,502 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   CSS Reset
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+    font-family: "Microsoft YaHei","Î¢ÈíÑÅºÚ";
+    font-size: 13px;
+	vertical-align: baseline;
+    outline:none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+input,textarea{
+    padding: 0px;
+}
+input:focus,textarea:focus{
+    outline:none;
+}
+
+/*pagination Style*/
+.paginationFund{
+    width: 100%;
+    height: 40px;
+    .paginationLeft{
+        float: left;
+        margin-left: 15px;
+        margin-top: 8px;
+        color: #999;
+        line-height: 20px;
+    }
+    .paginationRight{
+       float: right;
+        margin-top: 8px;
+        color: #999;
+        line-height: 20px; 
+        a{
+            text-decoration: none;
+            padding: 4px;    
+        }
+    }
+    .paginatorPageNumber{
+        float: right;
+        color: #B7AFA5;
+        text-decoration: none;
+        padding: 10px;
+        select{
+            color: #3F3F3F;
+            background-color: Silver;
+            height: 16px;
+        }
+    }
+}
+
+/*fileLoader Style*/
+.fileUpLoader{
+    display: inline-block;
+    position: relative;
+    width: 242px;
+    height:26px;
+    [type=text] {
+        width: 70%;
+        display: inline-block;    
+    }
+    .fileLoaderButton{
+        display: inline-block;    
+        position: absolute;
+        top: 0px;
+        line-height: 26px;
+        text-align: center;
+        width: 30%;
+        border-radius: 2px;
+    }
+    .fileLoaderShow{
+        line-height: 26px;
+        height: 26px;
+        border: 0px;
+        padding: 0px;    
+    }
+    input[type=file]{
+        display: inline-block;    
+        position: absolute;
+        top: 0px;
+        width: 30% !important;
+        height: 26px;
+        opacity: 0;
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+        font-size: 0;
+        cursor: pointer;
+    }   
+}
+
+
+/*fundTable Style*/
+.fundTable{
+    overflow-x: scroll;
+    font-size: 13px;
+    width:100%;
+    thead{
+        white-space: nowrap;
+        background-color: #47423C;
+        color: #B7AFA5;
+        font-size: 13px;
+        text-align: center;
+        height:25px;
+        line-height: 25px;
+        a{
+            color: #B7AFA5;
+            text-decoration: none;
+            &:hover{
+                color: #ffc446;
+                cursor: pointer;
+            }
+        }
+    }
+    thead:hover{
+        background-color: #47423C;
+    }
+    tbody{
+        tr{
+            font-size: 13px;
+            vertical-align: top;
+            &:nth-child(odd){
+                background-color: #514C44;
+            }
+            &:nth-child(even){
+                background-color: #47423C;
+            }
+            &:hover{
+                background-color: #727272;
+            } 
+        }  
+    }
+    td{
+        white-space: nowrap;
+        text-align: left;
+        padding: 4px;
+        vertical-align: middle;
+        a{
+            color: #ffc446;
+            padding: 5px;   
+        } 
+    }
+}
+
+/*fundTableNew Style*/
+.fundTableNew{
+    overflow-x: scroll;
+    font-size: 13px;
+    width:100%;
+    thead{
+        white-space: nowrap;
+        background-color: #625c53;
+        color: #e0e0e3;
+        font-size: 13px;
+        text-align: center;
+        a{
+            color: #e0e0e3;
+            text-decoration: none;
+            &:hover{
+                color: #ffc446;
+                cursor: pointer;
+            }
+        }
+        tr{
+            height: 40px;
+        }
+    }
+    thead:hover{
+        background-color: #625c53;
+    }
+    tbody{
+        tr{ 
+            height: 32px;
+            font-size: 13px;
+            vertical-align: top;
+            &:nth-child(odd){
+                background-color: #514c44;
+            }
+            &:nth-child(even){
+                background-color: #47423C;
+            }
+            &:hover{
+                background-color: #727272;
+            } 
+        }  
+    }
+    td{
+        white-space: nowrap;
+        text-align: left;
+        padding: 4px;
+        vertical-align: middle;
+        a{
+            color: #ffc446;
+            padding: 5px;   
+        } 
+    }
+}
+
+
+//InfoTable样式
+table.fixedTable, table.infoTable, table.operationTable {
+    font-size: 13px;
+    border-collapse: collapse;
+    margin-top: 10px;
+    width: 100%;
+}
+
+table.fixedTable tr:first-child td, 
+table.infoTable tr th, table.operationTable tr th {
+    color: #B7AFA5;
+}
+
+table.infoTable tr th,
+table.infoTable tr td {
+    border-collapse: collapse;
+    border: 1px solid #666;
+    vertical-align: middle;
+    padding: 2px 2px;
+    height: 32px;
+}
+
+table.infoTable  td:first-child
+,table.infoTable th:first-child {
+    padding-left:20px;
+}
+
+table.infoTable  td:last-child
+,table.infoTable th:last-child {
+    padding-right:20px;
+}
+
+/*fundInput*/
+/*input和select外面的div-class*/
+.rowList{
+    padding: 4px;
+    display: inline-block;
+    label{
+        color: #F2EBE3;
+        min-width:74px;
+        float:left;
+        height:26px;
+        line-height:26px;
+        display:inline-block;
+        text-align:right;
+        margin:0 2px;
+    }
+}
+
+/*input[type=text]*/
+.fundInputText{
+    background-color: #FFFED1;
+    border: none;
+    border-radius: 2px;
+    line-height: 24px;
+    color: #5C554D;
+    height: 26px;
+    padding: 0 1px;
+}
+/*input[type=submit]*/
+.fundBtn{
+    outline: none;
+    border-style: none;
+    color: #B7AFA5;
+    cursor: pointer;
+    font-size: 13px;
+    background-color: #5C554D;
+    height: 26px;
+    line-height: 24px;
+    min-width: 70px;
+    border: none;
+    border-radius: 4px;
+    text-align:center;
+    align-items: flex-start;
+    padding:1px 6px;
+    transition: background-color 1s;
+    /*position: relative;
+    top: 2px;*/
+}
+.fundBtn:hover{
+    background-color: #756e66 ;
+}
+.fundYellowBtn{
+    outline: none;
+    border-style: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #ffc446;
+    height: 26px;
+    line-height: 24px;
+    min-width: 70px;
+    border: none;
+    border-radius: 4px;
+    text-align:center;
+    align-items: flex-start;
+    padding:1px 6px;
+    transition: background-color 1s;
+}
+.fundYellowBtn:hover{
+    background-color: #FFB90F;
+}
+/*input[type=radio]*/
+.radioBox{
+    padding: 0 4px;
+    display: inline-block;
+    label{
+        color: #F2EBE3;
+        height:26px;
+        line-height:26px;
+        display:inline-block;
+        text-align:right;
+    }
+}
+
+input[type=radio]{
+    vertical-align: middle;
+    margin: 0px;
+}
+
+
+/*fundselect*/
+.fundSelect{
+    background-color: #FFFED1;
+    border: none;
+    border-radius: 2px;
+    line-height: 24px;
+    color: #5C554D;
+    height:26px;
+    width:171px;
+    option{
+        background-color: #fff;
+        color: #000;
+        line-height: 22px;
+    }
+}
+
+/*fundselect--multiple*/
+.fundSelectMul{
+    background-color: #FFFED1;
+    border: none;
+    border-radius: 2px;
+    color: #5C554D;
+    min-width:171px;
+    option{
+        background-color: #fff;
+        color: #000;
+    }
+}
+/*Select2 Styles*/
+ .select2-selection--single {
+    height: 26px !important;
+    background-color: #FFFED1 !important;
+}
+
+.select2-selection__rendered {
+    background-color: #FFFED1 !important;
+    line-height: 24px !important;
+}
+
+.select2-search__field {
+    height: 24px !important;
+}
+
+li.select2-results__option {
+    color: black !important;
+}
+
+.ui-widget-content {
+    background-color: #47423c !important;
+}
+
+
+/*handsontable-style*/
+.handsontable {
+    th{
+        background-color: #3B3734 !important;
+        color: #B7AFA5 !important;
+        &:first-child{
+            border-left: 1px solid #666 !important;
+        }
+        &:last-child{
+            border-right: 1px solid #666 !important;
+            border-bottom: 1px solid #666 !important;
+        }
+    }
+
+    tr{
+        &:first-child{
+            th{
+                border-top: 1px solid #666 !important;
+            }
+            td{
+                border-top: 1px solid #666 !important;
+            }
+        }
+    }
+
+    td{
+        &:first-of-type{
+            border-left: 1px solid #666 !important;
+        }
+    }
+        
+}
+
+.ht_clone_top  {
+    th{
+    border-top: 1px solid #666 !important;
+    border-right: 1px solid #666 !important;
+    border-bottom: 1px solid #666 !important;
+    }
+        
+}
+
+.ht_master {
+    tr{
+        >td{
+            border-right: 1px solid #666 !important;
+            border-bottom: 1px solid #666 !important;
+        }
+
+        &:nth-of-type(odd) {
+            > td{
+                background-color: #514C44 !important;
+            }
+        }
+        &:nth-of-type(even) {
+            > td{
+                background-color: #47423C !important;
+            }
+        }
+    }
+} 
+
+.htContextMenu{
+    table{
+        tbody{
+            tr{
+                td{
+                    .current,
+                    .zeroclipboard-is-hover{
+                        background: #e9e9e9 !important;
+                        color:#000 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.highlight{
+    color: #FFC000;
+}
+.fundRow{
+    display: block;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    padding: 10px 10px 0px 10px
+}
+.fundAnnotation{
+    color: #FFCA8E;
+    margin: 5px;    
+}
