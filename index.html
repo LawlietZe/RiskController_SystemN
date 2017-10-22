@@ -33,15 +33,15 @@
 		height: 200px;
 	}
 	.configPanel_left{
-		float: left;
-	    width: 433px;
+			float: left;
+	    width: 300px;
 	    height: 200px;
-	    margin-right: 47px;
 	    border: 1px solid #bdbbb2;
+	    margin-right: 30px
 	}
 	.configPanel_right{
 		float: left;		
-		width: 500px;
+		width: 650px;
 		height: 200px;
 		border: 1px solid #bdbbb2;
 	}
@@ -55,14 +55,10 @@
 		line-height: 48px;
 	}
 	.configRowSingle input{
-		width: 40px;
-	}
-	.configRowSingle{
-		padding: 5px;
-	}
-	.configRowSingle a{
-		float: right;
-	}
+		width: 31px;
+    height: 20px;
+    text-align: center;	
+  }
 	.collectionContainer{
 		margin-top: 20px;
 		width: 100%;
@@ -101,7 +97,7 @@
 		display: inline-block;
 	}
 	.configList{
-		width: 315px;
+		width: 150px;
 		padding: 5px;
 		color: #169bD9;
 	}
@@ -120,7 +116,48 @@
 	    left: 5px;
 	    padding: 5px;
 	    z-index: 88
+	}
+	.configPanel_right_title{
+		border-bottom: 1px solid #bdbbb2;
+		padding: 5px;
+	}
+	.configRowSingle{
+		width: 100%;
+		border-bottom: 1px solid #bdbbb2;
+	}
+	.configRowSingle .item{
+		height: 26px;
+		line-height: 26px;
+		box-sizing: border-box;
+		text-align: center;
+		display:inline-block;		
+		width: 10%;
+		border-right: 1px solid #bdbbb2;
+	}
+	.configRowSingle .itemCondition{
+		width: 20%;
+	}
+	.configRowSingle .itemDelete{
+		width: 24px;
+		border-right: 0px;
+	}
+	.configRowSingle .itemArguments{
+		width: 22%;
+	}
+	.configRowSingle .itemOpera select{
+		width: 67px;
+    margin-left: -3px;	
+  }
+	.configRowSingle .itemUnit select{
+		width: 67px;
+    margin-left: -3px;	
+  }  
+	.reportType{
+		width: 83px;
 	}	
+	.nature{
+		width: 54px;
+	}
 </style>
 <body>
 	<div class="pageContainer">
@@ -169,97 +206,123 @@
 				<div class="configPanel_left_Container">
 					<div class="configPanel_sideBar">
 						<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-                        
-                        <!-- 左侧大项模板 -->
+            <!-- 左侧大项模板 -->
 						<script id="configPanel_left_Tmp" type="text/x-dot-template">
 					        {{ for(prop in it){ }}
-					        	{{? prop === 0 }}
-									<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#{{= it[prop].ParentId }}" role="tab">{{= it[prop].ParentName }}</a>
+					        	{{? prop == 0 }}
+									<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#{{= it[prop].CatagoryId }}" role="tab">{{= it[prop].CategoryDescrition }}</a>
 									{{??}}
-									<a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#{{= it[prop].ParentId }}" role="tab">{{= it[prop].ParentName }}</a>								
-								{{?}}
+									<a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#{{= it[prop].CatagoryId }}" role="tab">{{= it[prop].CategoryDescrition }}</a>
+									{{?}}
 							{{ } }}		
 						</script>
 						</div>
 					</div>
 					<div class="configPanel_conf">
 						<div class="tab-content" id="v-pills-tabContent">
-                        <!-- 左侧小项模板 -->
-						<script id="configPanel_conf_Tmp" type="text/x-dot-template">
-					        {{ for(prop in it){ }}
-								<div class="tab-pane fade show" id="{{= it[prop].ParentId }}" role="tabpanel">
-									{{ for(number in it[prop].Children){ }}
-								   		<div class="configList"><a class="singleList" href="#" data-type="{{= it[prop].Children[number].type }}">{{= it[prop].Children[number].ChildName }}</a></div>
-								   	{{ } }}
-						  		</div>
-							{{ } }}		
-						</script>
-
-
-<!-- 						  <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="v-pills-home-tab">
-						   		<div class="configList"><a href="#"></a>总资产<div class="configList_Op"><a href="#">√ </a><a href="#">×</a></div></div>
-						   		<div class="configList"><a href="#">净资产</a></div>
-						   		<div class="configList"><a href="#">销售收入</a></div>
-						  </div>
-						
-
-						  <div class="tab-pane fade" id="MakertData" role="tabpanel">
-						  	<div class="configList">负债率绝对指标<div class="configList_Op"><a href="#">√ </a><a href="#">×</a></div></div>
-						   		<div class="configList"><a href="#">负债率相对指标</a></div>
-						   		<div class="configList"><a href="#">利息保障倍数3年绝对指标</a></div>
-						   		<div class="configList"><a href="#">利息绝对保障倍数最近1年绝对指标</a></div>
-						   		<div class="configList"><a href="#">利息绝对保障倍数3年相对指标</a></div>
-						  </div>
-						  <div class="tab-pane fade" id="financeData" role="tabpanel">
-						   		<div class="configList"><a href="#">净利润3年绝对指标</a></div>
-						   		<div class="configList"><a href="#">净利润最近1期绝对指标</a></div>
-						   		<div class="configList"><a href="#">ROE最近1年相对指标</a></div>
-						   		<div class="configList"><a href="#">ROE3年波动率相对指标</a></div>
-						  </div> -->
+	            <!-- 左侧小项模板 -->
+							<script id="configPanel_conf_Tmp" type="text/x-dot-template">
+						        {{ for(prop in it){ }}
+						        {{? prop == 0 }}
+									<div class="tab-pane fade show active" id="{{= it[prop].CatagoryId }}" role="tabpanel">
+									{{??}}
+									<div class="tab-pane fade show" id="{{= it[prop].CatagoryId }}" role="tabpanel">
+									{{?}}
+										{{ for(number in it[prop].Children){ }}
+									   		<div class="configList"><a class="singleList" href="javascript:void(0)" data-type="{{= it[prop].Children[number].ConditionType }}" data-description="{{= it[prop].Children[number].ConditionDescription }}">{{= it[prop].Children[number].ConditionDescription }}</a></div>
+									   	{{ } }}
+							  		</div>
+								{{ } }}		
+							</script>
 						</div>					
 					</div>
-
 				</div>
-
 			</div>
 			<div class="configPanel_right">
-				<div>
-					<span>修改筛选标准</span>
-					<div class="configPanel_right_top">
-						<span><a class="addColle" href="#" >加入结果集</a></span>
-						<span>|</span>
-						<span><a href="#">全部清除</a></span>
+				<div id="configPanel_right_container">
+					<div class="configPanel_right_title">
+						<span>修改筛选标准</span>
+						<div class="configPanel_right_top">
+							<span><a class="addColle" href="#" >加入结果集</a></span>
+							<span>|</span>
+							<span><a href="#">全部清除</a></span>
+						</div>
 					</div>
 					<div class="configRowSingle">
-						<span>总资产</span>
-						<span>国营：剔除<=</span>
-						<input type="text">
-						<span>%</span>
-						<span>总资产</span>
-						<span>国营：剔除<=</span>
-						<input type="text">
-						<span>%</span>
-						<a href="#">×</a>						
+						<span class="item itemId">编号</span>
+						<span class="item itemCondition">债券筛选条件</span>
+						<span class="item itemArguments">参数</span>
+						<span class="item itemOpera">运算符</span>
+						<span class="item itemVaule">值</span>
+						<span class="item itemUnit">单位</span>
+						<span class="item itemKey">是否关键</span>
+						<span class="item itemDelete">&nbsp</span>
 					</div>
+<!-- 					关键指标    -->
+						<div class="configRowSingle">
+						<span class="item itemId">#1</span>
+						<span class="item itemCondition">关键指标</span>
+						<span class="item itemArguments">&nbsp</span>
+						<span class="item itemOpera">通过</span>
+						<span class="item itemVaule"><input type="text" name="" value="0">/0</span>
+						<span class="item itemUnit">&nbsp</span>
+						<span class="item itemKey">&nbsp</span>
+						<span class="item itemDelete"><a href="#">×</a></span>
+					</div>
+<!-- 					非关键指标    -->
 					<div class="configRowSingle">
-						<span>总资产</span>
-						<span>国营：剔除<=</span>
-						<input type="text">
-						<span>%</span>
-						<span>总资产</span>
-						<span>国营：剔除<=</span>
-						<input type="text">
-						<span>%</span>
-						<a href="#">×</a>						
-					</div>					
-					<div class="configRowSingle">
-						<span>利息保障倍数</span>
-						<span>剔除3年低于</span>
-						<select class="averg">
-							<option value="">行业平均</option>
-						</select>
-						<a href="#">×</a>						
-					</div>					
+						<span class="item itemId">#2</span>
+						<span class="item itemCondition">关键指标</span>
+						<span class="item itemArguments">&nbsp</span>
+						<span class="item itemOpera">通过</span>
+						<span class="item itemVaule"><input type="text" name="" value="0">/0</span>
+						<span class="item itemUnit">&nbsp</span>
+						<span class="item itemKey">&nbsp</span>
+						<span class="item itemDelete"><a href="#">×</a></span>
+					</div>
+<!-- 					债券类型    -->
+					<div class="configRowSingle next">
+						<span class="item itemId">#3</span>
+						<span class="item itemCondition">债券类型</span>
+						<span class="item itemArguments">&nbsp</span>
+						<span class="item itemOpera">
+							<select>
+								<option value="0">仅显示</option>
+							</select>
+						</span>
+						<span class="item itemVaule"><input type="text" name="" value="0">/0</span>
+						<span class="item itemUnit">&nbsp</span>
+						<span class="item itemKey">&nbsp</span>
+						<span class="item itemDelete"><a href="#">×</a></span>
+					</div>	
+<!-- 					过滤型类型模板    -->
+					<script id="fliterType_tmp" type="text/x-dot-template">
+						<div class="configRowSingle">
+							<span class="item itemId">#4</span>
+							<span class="item itemCondition">{{= 	}}</span>
+							<span class="item itemArguments">
+								<select class="nature">
+									<option>民营</option>
+								</select>
+								<select class="reportType">
+									<option>3年中2年</option>
+								</select>
+							</span>
+							<span class="item itemOpera">
+								<select>
+									<option value="0"><=</option>
+								</select>
+							</span>
+							<span class="item itemVaule"><input type="text" name="" value="">/%</span>
+							<span class="item itemUnit">
+								<select>
+									<option>百分数</option>
+								</select>
+							</span>
+							<span class="item itemKey"><input type="checkbox" name=""></span>
+							<span class="item itemDelete"><a href="#">×</a></span>
+						</div>	
+					</script>									
 				</div>
 			</div>
 		</div>
