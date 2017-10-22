@@ -17,11 +17,11 @@
 	.selectPanel{
 		padding-top: 50px;
 		width: 100%;
-		height: 150px;
+		height: 90px;
 	}
 	.rowList{
 		display: inline-block;
-		width: 300px;
+		width: 268px;
 		padding: 5px 0px;
 	}
 	.rowList label{
@@ -44,6 +44,8 @@
 		width: 650px;
 		height: 200px;
 		border: 1px solid #bdbbb2;
+		overflow: auto;
+		position: relative;
 	}
 	.configPanel_right_top{
 		padding: 0px 5px 0px 5px;
@@ -53,6 +55,10 @@
 		width: 100%;
 		height: 48px;
 		line-height: 48px;
+	}
+	.collectionContainer_title{
+		width: 100%;
+		padding: 5px;
 	}
 	.configRowSingle input{
 		width: 31px;
@@ -134,6 +140,9 @@
 		width: 10%;
 		border-right: 1px solid #bdbbb2;
 	}
+	.tmpFix{
+		margin-left: 4px;
+	}
 	.configRowSingle .itemCondition{
 		width: 20%;
 	}
@@ -158,6 +167,21 @@
 	.nature{
 		width: 54px;
 	}
+	.conditionContainer{
+		position: absolute;
+    bottom: 0px;
+    border-top: 1px solid #bdbbb2;
+    width: 100%;
+    height: 28px;
+    line-height: 26px;
+	}
+	.conditionContainer input{
+		height: 20px;
+		width: 93%;
+	}
+	.conditionContainerText{
+		padding:0px 5px;
+	}
 </style>
 <body>
 	<div class="pageContainer">
@@ -170,35 +194,7 @@
 					</select>
 				</div>
 				<span><a href="#">添加</a></span>			
-			</div>
-			<div class="rowContainer">
-				<div class="rowList">
-					<label>债券类别：</label>
-					<select name="" id="">
-						<option>请选择</option>
-					</select>
-				</div>
-				<div class="rowList">
-					<label>行业类别：</label>
-					<select name="" id="">
-						<option>请选择</option>
-					</select>
-				</div>
-				<div class="rowList">
-					<label>债券类别：</label>
-					<select name="" id="">
-						<option>请选择</option>
-					</select>
-				</div>								
-			</div>
-			<div class="rowContainer">
-				<div class="rowList" style="width: 500px">
-					<label>债券代码或名称：</label>
-					<select style="width: 281px" name="" id="">
-						<option>标准指标</option>
-					</select>
-				</div>
-			</div>						
+			</div>				
 		</div>
 		<div class="configPanel">
 			<div class="configPanel_left">
@@ -259,7 +255,7 @@
 						<span class="item itemDelete">&nbsp</span>
 					</div>
 <!-- 					关键指标    -->
-						<div class="configRowSingle">
+					<div class="configRowSingle">
 						<span class="item itemId">#1</span>
 						<span class="item itemCondition">关键指标</span>
 						<span class="item itemArguments">&nbsp</span>
@@ -272,7 +268,7 @@
 <!-- 					非关键指标    -->
 					<div class="configRowSingle">
 						<span class="item itemId">#2</span>
-						<span class="item itemCondition">关键指标</span>
+						<span class="item itemCondition">非关键指标</span>
 						<span class="item itemArguments">&nbsp</span>
 						<span class="item itemOpera">通过</span>
 						<span class="item itemVaule"><input type="text" name="" value="0">/0</span>
@@ -281,7 +277,7 @@
 						<span class="item itemDelete"><a href="#">×</a></span>
 					</div>
 <!-- 					债券类型    -->
-					<div class="configRowSingle next">
+					<div class="configRowSingle">
 						<span class="item itemId">#3</span>
 						<span class="item itemCondition">债券类型</span>
 						<span class="item itemArguments">&nbsp</span>
@@ -293,14 +289,18 @@
 						<span class="item itemVaule"><input type="text" name="" value="0">/0</span>
 						<span class="item itemUnit">&nbsp</span>
 						<span class="item itemKey">&nbsp</span>
-						<span class="item itemDelete"><a href="#">×</a></span>
-					</div>	
+						<span class="item itemDelete"><a href="#">×</a></span>								
+					</div>
+					<div class="conditionContainer">
+						<span class="conditionContainerText"> 条件</span>
+						<input type="text" name="">
+					</div>					
 <!-- 					过滤型类型模板    -->
 					<script id="fliterType_tmp" type="text/x-dot-template">
 						<div class="configRowSingle">
-							<span class="item itemId">#4</span>
-							<span class="item itemCondition">{{= 	}}</span>
-							<span class="item itemArguments">
+							<span class="item itemId">#{{= it.number}}</span>
+							<span class="item itemCondition tmpFix">{{= it.ConditionDescription}}</span>
+							<span class="item itemArguments tmpFix">
 								<select class="nature">
 									<option>民营</option>
 								</select>
@@ -308,18 +308,18 @@
 									<option>3年中2年</option>
 								</select>
 							</span>
-							<span class="item itemOpera">
+							<span class="item itemOpera tmpFix">
 								<select>
 									<option value="0"><=</option>
 								</select>
 							</span>
-							<span class="item itemVaule"><input type="text" name="" value="">/%</span>
-							<span class="item itemUnit">
+							<span class="item itemVaule tmpFix"><input type="text" name="" value="">/%</span>
+							<span class="item itemUnit tmpFix">
 								<select>
 									<option>百分数</option>
 								</select>
 							</span>
-							<span class="item itemKey"><input type="checkbox" name=""></span>
+							<span class="item itemKey tmpFix"><input type="checkbox" name=""></span>
 							<span class="item itemDelete"><a href="#">×</a></span>
 						</div>	
 					</script>									
@@ -327,7 +327,7 @@
 			</div>
 		</div>
 		<div class="collectionContainer clearfix">
-			<div class="configRowSingle">筛选条件集<span class="collectionContainer_right"><a href="#">另存为模板</a></span></div>
+			<div class="collectionContainer_title">筛选条件集<span class="collectionContainer_right"><a href="#">另存为模板</a></span></div>
 			<div class="collection">
 				<div class="collectionTitle">
 					<span>国债等2项</span>

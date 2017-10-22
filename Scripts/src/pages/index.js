@@ -22,7 +22,7 @@ require(['jquery','select2','doT','fundComponent','bootstrap'],function ($, sele
 
 	var data  = { "Items": [
 
-				{ "CategoryDescrition": "基本信息", "CatagoryId":"basicInfo", "Children": [{ "ConditionDescription" : "总资产" ,"ConditionId":"1","ConditionType":"filter","DefaultOperatorType":"","DefaultValueType":""},{"ConditionDescription" : "净资产","ConditionType":"analyze"},{"ConditionDescription" : "销售收入"}] },
+				{ "CategoryDescrition": "基本信息", "CatagoryId":"basicInfo", "Children": [{ "ConditionDescription" : "总资产" ,"ConditionId":"1","ConditionType":"filter","DefaultOperatorType":"","DefaultValueType":""},{"ConditionDescription" : "净资产","ConditionType":"filter"},{"ConditionDescription" : "销售收入"}] },
 
 				{ "CategoryDescrition": "行情数据", "CatagoryId":"MakertData", "Children": [{ "ConditionDescription" : "负债率绝对指标" },{"ConditionDescription" : "负债率相对指标"},{"ConditionDescription" : "销售收入"}]},
 
@@ -31,7 +31,7 @@ require(['jquery','select2','doT','fundComponent','bootstrap'],function ($, sele
 				]}
 
 	var conditionListData = [];
-
+  debugger;
 
 	//渲染标准数据（左侧大项模板）
 	
@@ -44,16 +44,14 @@ require(['jquery','select2','doT','fundComponent','bootstrap'],function ($, sele
 	
 	//数据注入
 	$(".singleList").click(function() {
-		var listData =  {
-			"ConditionDescription" : '',
-		};
-		debugger
+		debugger;
 		var ConditionType = $(this).data("type");
 		var description = $(this).data("description");
-		listData.ConditionDescription = description;
+		var number   = $(".configRowSingle").length -1;
+		var listData = {"ConditionDescription": description, "number":number};
 		if (ConditionType == "filter") {
-			var filterTmp = doT.template($("#fliterType_tmp").text());
-			$("#configPanel_right_container").append(filterTmp(listData));	
+			var interText3 = doT.template($("#fliterType_tmp").text());
+			$("#configPanel_right_container").append(interText3(listData));	
 		}
 		else if (ConditionType == "analyze") {
 
